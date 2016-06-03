@@ -1,0 +1,84 @@
+﻿@model AMS.Models.Asset
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="md-card">
+    <div class="md-card-content">
+        <div>
+            <h4>Asset</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.assetname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.assetname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.image)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.image)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Employee.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Employee.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Manufacture.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Manufacture.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Room.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Room.name)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "AllAsset")
+        </p>
+    </div>
+</div>

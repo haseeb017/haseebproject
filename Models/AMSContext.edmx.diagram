@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb2645c18f144b7e936cf9255d416b0c" Name="Diagram1">
+        <EntityTypeShape EntityType="AssetModel.Asset" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="AssetModel.Category" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="AssetModel.Department" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="AssetModel.Employee" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="AssetModel.Manufacture" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="AssetModel.Room" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="AssetModel.User" Width="1.5" PointX="5.75" PointY="5.75" />
+        <AssociationConnector Association="AssetModel.FK_Asset_Category" />
+        <AssociationConnector Association="AssetModel.FK_Asset_Employee" />
+        <AssociationConnector Association="AssetModel.FK_Asset_Manufacture" />
+        <AssociationConnector Association="AssetModel.FK_Asset_Room" />
+        <AssociationConnector Association="AssetModel.FK_Room_Room" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

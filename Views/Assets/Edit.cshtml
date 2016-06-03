@@ -1,0 +1,94 @@
+﻿@model AMS.Models.Asset
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="md-card">
+    <div class="md-card-content">
+        <h2>Edit Asset</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.assetname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.assetname, new { htmlAttributes = new { @class = "md-input" } })
+                        @Html.ValidationMessageFor(model => model.assetname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "md-input" } })
+                        @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.roomid, "roomid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("roomid", null, htmlAttributes: new { @class = "md-input" })
+                        @Html.ValidationMessageFor(model => model.roomid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.categoryid, "categoryid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("categoryid", null, htmlAttributes: new { @class = "md-input" })
+                        @Html.ValidationMessageFor(model => model.categoryid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "md-input" } })
+                        @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.manufacturerid, "manufacturerid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("manufacturerid", null, htmlAttributes: new { @class = "md-input" })
+                        @Html.ValidationMessageFor(model => model.manufacturerid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.employeeid, "employeeid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("employeeid", null, htmlAttributes: new { @class = "md-input" })
+                        @Html.ValidationMessageFor(model => model.employeeid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "md-input" } })
+                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="uk-form-row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="md-btn md-btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<AMS.Models.Asset>
+
+<form action="~/Reports/BySerial" method="post">
+    <h2>By Serial No</h2>
+    <select class="md-input" name="selectfilter">
+        @foreach (var item in Model)
+        {
+            <option value="@item.id">@item.serialno</option>
+        }
+    </select>
+
+    <button type="submit" class="md-btn md-btn-primary">View Data</button>
+</form>
+
+

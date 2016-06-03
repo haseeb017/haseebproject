@@ -1,0 +1,106 @@
+﻿@model IEnumerable<AMS.Models.Asset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+<h4 class="heading_a uk-margin-bottom">Assets</h4>
+<div class="md-card uk-margin-medium-bottom">
+    <div class="md-card-content">
+        <a href="~/Assets/Create" class="md-btn md-btn-primary">Create</a>
+        <table id="dt_tableTools" class="uk-table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Asset
+                    </th>
+                    <th>
+                        Serial No
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.image)
+                    </th>*@
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Employee
+                    </th>
+                    <th>
+                        Manufacture
+                    </th>
+                    <th>
+                        Room
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.assetname)
+                        </td>
+                        <td>
+                            @item.serialno
+                        </td>
+                        <td>
+                            @item.date.Day / @item.date.Month / @item.date.Year
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.image)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.name)
+                        </td>
+                        <td>
+                            @if (item.employeeid == null)
+                            {
+                                 <label class="label uk-text-danger">Not Assigned</label>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Employee.name)
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Manufacture.name)
+                        </td>
+                        <td>
+                            @if (item.roomid == null)
+                            {
+                                <label class="label uk-text-danger">Not Assigned</label>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Room.name)   }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

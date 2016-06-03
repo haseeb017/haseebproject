@@ -1,0 +1,52 @@
+﻿@model AMS.Models.Room
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="md-card">
+    <div class="md-card-content">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Room</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Department.title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Department.title)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="md-btn md-btn-primary" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</div>

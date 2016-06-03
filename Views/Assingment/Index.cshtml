@@ -1,0 +1,151 @@
+﻿
+@model IEnumerable<AMS.Models.Asset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="uk-width-medium-1-3" id="empfrm" style="position: absolute; z-index: 999; top: 30%; left: 30%">
+    <div class="md-card uk-margin-medium-bottom">
+        <form action="~/Assingment/EmployeeAssign" method="post">
+            <div class="md-card-content">
+                <div class="uk-form-row">
+                    Employee
+                    <select class="md-input" id="em" name="em">
+                        @foreach (var item in ViewBag.employees)
+                        {
+                            <option value="@item.id">@item.name</option>
+                        }
+                    </select>
+                    <input type="hidden" name="assetide" id="assetide"/>
+                </div>
+
+                <button type="submit" class="md-btn md-btn-primary">Assign</button>
+                <a class="md-btn md-btn-primary Close">Close</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="uk-width-medium-1-3" id="roomfrm" style="position: absolute; z-index: 999; top: 30%; left: 30%; ">
+    <div class="md-card uk-margin-medium-bottom">
+        <form action="~/Assingment/RoomAssign" method="post">
+            <div class="md-card-content">
+                <div class="uk-form-row">
+                    Rooms
+                    <select class="md-input" id="rm" name="rm">
+                        @foreach (var item in ViewBag.rooms)
+                        {
+                            <option value="@item.id">@item.name</option>
+                        }
+                    </select>
+                </div>
+                <input type="hidden" name="assetidr" id="assetidr" />
+
+                <button type="submit" class="md-btn md-btn-primary">Assign</button>
+                    <a class="md-btn md-btn-primary Close">Close</a>
+</div>
+        </form>
+</div>
+</div>
+
+
+        <h4 class="heading_a uk-margin-bottom">Assets</h4>
+        <div class="md-card uk-margin-medium-bottom">
+            <div class="md-card-content">
+                <a href="~/Assets/Create" class="md-btn md-btn-primary">Create</a>
+                <table id="dt_tableTools" class="uk-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Asset
+                            </th>
+                            <th>
+                                Serial No
+                            </th>
+
+                            <th>
+                                Room
+                            </th>
+
+                            <th>
+                                Employee
+                            </th>
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.assetname)
+                                </td>
+                                <td>
+                                    @item.serialno
+                                </td>
+                                <td>
+                                    @if (item.roomid == null)
+                                    {
+                                        <label class="label uk-text-danger">Not Assigned</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="label uk-text-success"> @Html.DisplayFor(modelItem => item.Room.name) </label>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.employeeid == null)
+                                    {
+                                        <label class="label uk-text-danger">Not Assigned</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="label uk-text-success"> @Html.DisplayFor(modelItem => item.Employee.name) </label>
+                                    }
+                                </td>
+                                <td>
+                                    <a class="md-btn md-btn-primary" onclick="arfunction(@item.id)" id="ar">Assign to room</a>
+                                    <a class="md-btn md-btn-primary" onclick="aefunction(@item.id)" id="ae">Assign to employee</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+<script src="~/assets/jquery.min.js"></script>
+<script src="~/assets/Jquery-ui.min.js"></script>
+<script>
+    
+    function arfunction(id){
+
+        $("#assetidr").val(id);
+        $("#roomfrm").show();
+    }
+
+    function aefunction(id){
+        $("#assetide").val(id);
+        $("#empfrm").show();
+    }
+    $("#empfrm").hide();
+    $("#roomfrm").hide();
+
+    $("#empfrm").draggable();
+    $("#roomfrm").draggable();
+
+    //$("#ar").click(function () {
+    //    $("#roomfrm").show();
+    //});
+    //$("#ae").click(function () {
+    //    $("#empfrm").show();
+    //});
+    $(".Close").click(function () {
+        $("#empfrm").hide();
+        $("#roomfrm").hide();
+    });
+</script>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AMS.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<h4 class="heading_a uk-margin-bottom">Category</h4>
+<div class="md-card uk-margin-medium-bottom">
+    <div class="md-card-content">
+        <a href="~/Categories/Create" class="md-btn md-btn-primary">Create</a>
+        <table id="dt_tableTools" class="uk-table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

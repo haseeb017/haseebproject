@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AMS.Models.Asset>
+
+
+
+@{
+    ViewBag.Title = "byemp";
+}
+<form action="~/Reports/ByEmployee" method="post">
+    <select class="md-input" name="selectfilter">
+        @foreach (var item in Model)
+        {
+            <option value="@item.id">@item.Employee.name</option>
+        }
+    </select>
+    <button type="submit" class="md-btn md-btn-primary">View Data</button>
+</form>
